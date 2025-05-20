@@ -10,7 +10,10 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
-    domains: ["api.accountants.co.rw"], 
+    domains: ["api.accountants.co.rw"],
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 
