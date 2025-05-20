@@ -1,0 +1,236 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@layer components {
+  .layout-standard {
+    @apply container mx-auto flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0;
+  }
+  .input-field {
+    @apply w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary;
+  }
+  .checkbox {
+    @apply w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary;
+  }
+  .bg-primary {
+    background-color: #25a38b;
+  }
+}
+
+body {
+  font-family: var(--font-montserrat), sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #25a38b;
+  --primary-dark: #007a53;
+  --white: #ffffff;
+  --black: #000000;
+  --text-light: #4d4d4d;
+  --bg-color: #f3f4f6;
+  --shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  @apply font-sans;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h1 {
+  @apply text-3xl font-semibold md:text-6xl;
+}
+h2 {
+  @apply text-2xl font-semibold md:text-4xl;
+}
+h3 {
+  @apply text-xl font-bold md:text-3xl;
+}
+h4 {
+  @apply text-sm font-semibold md:text-xl;
+}
+p {
+  @apply text-xs font-normal md:text-sm;
+}
+
+header {
+  background: var(--bg-color);
+  padding: 0 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 500;
+  padding: 0 15px;
+  transition: color 0.3s ease-in-out;
+}
+nav a:hover {color: var(--primary-color);}
+
+nav a:hover {
+  color: var(--primary-color)
+}
+
+button,
+.btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 10px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+button:hover,
+.btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+section {
+  padding: 5% 10%;
+}
+
+.card {
+  background: var(--secondary-color);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--hover-shadow);
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.social-icons svg {
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--white);
+  border-radius: 50%;
+  background: var(--text-light);
+}
+.social-icons svg:hover {
+  background: var(--white);
+  color: var(--text-light);
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--primary-color) !important;
+}
+
+.block-container {
+  position: relative;
+  transition: 250ms;
+  perspective: 500px;
+}
+
+.block-container .btn-back {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: inherit;
+  height: inherit;
+  transition: 250ms;
+  transform-style: preserve-3d;
+  transform-origin: bottom right;
+  transform: rotateZ(15deg);
+  will-change: transform;
+  box-shadow: 16px 0 40px #e4e4e4;
+}
+
+.block-container .btn-front {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: inherit;
+  height: inherit;
+  background-color: #ffffff33;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  transition: 250ms;
+  transform-style: preserve-3d;
+  transform-origin: top left;
+  overflow: hidden;
+}
+
+.btn-back-green {
+  background: linear-gradient(135deg, #adfda2 -20%, #11d3f3 120%);
+}
+
+
+/* Start - About Us Swiper styles */
+
+
+.swiper-slide:not(.swiper-slide-active) {
+  opacity: 0.5;
+  transform: scaleY(2);
+}
+/* End - About Us Swiper styles */
+footer {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 30px 10%;
+}
+footer h3,
+footer p {
+  color: #ffffff;
+}
+footer a {
+  color: var(--white);
+  font-size: text-sm;
+  text-decoration: none;
+  font-weight: 500;
+}
+footer a:hover {
+  color: var(--black);
+}
+
+/* OVERIDING TAILWIND - BLOCKING TIPTAP CONFIGS */
+.ProseMirror ul{
+  padding: 0 1rem;
+  list-style: disc !important;
+}
+
+.ProseMirror ol{
+  padding: 0 2rem;
+  list-style: decimal !important;
+}
