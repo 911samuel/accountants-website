@@ -1,7 +1,7 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation"; // Use next/navigation in Next.js 13+ (app router)
 import { useAuth } from "@/context/authContext";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { requestAxios } from "@/api";
 
 
@@ -19,9 +19,10 @@ const noToLogin = (WrappedComponent: any) => {
                     const res = await requestAxios.get("/users/getme");
                     if (res.status === 200) {
                         auth.setUser({
-                            email: res.data.email,
-                            firstName: res.data.first_name,
-                            lastName: res.data.last_name
+                          email: res.data.email,
+                          firstName: res.data.first_name,
+                          lastName: res.data.last_name,
+                          role: res.data.role || "user",
                         });
                     }
                     alert(auth.user.email)
@@ -41,7 +42,7 @@ const noToLogin = (WrappedComponent: any) => {
                 router.push('/admin')
                 router.forward()
             }
-        }, [loading]);
+        }, [auth, loading, pathname, router]);
 
         if (loading) {
             return null;
